@@ -21,7 +21,7 @@ def gotoActivities():
   browser.find_element_by_partial_link_text('Healthy Habits').click()
 
 # open the datepicker
-def setStartDate(day=16, month='Feb', year=2014):
+def setStartDate(day=21, month='Mar', year=2014):
   browser.find_element_by_class_name('ui-datepicker-trigger').click()
   month_element = browser.find_element_by_class_name('ui-datepicker-month')
   for option in month_element.find_elements_by_tag_name('option'):
@@ -35,16 +35,16 @@ def setStartDate(day=16, month='Feb', year=2014):
       break
 
 # month needs to be all caps
-def isEndDate(day=20, month='MAR', year=2014):
+def isEndDate(day=31, month='MAR', year=2014):
   partialDateString = "%s %d, %d" % (month, day, year)
   return partialDateString in browser.find_element_by_class_name('dtDateText').text
 
 # tick the checkboxes and score some points
 def submitHabits():
-    browser.find_element_by_id('verifyBox559').click() # stairs
-    browser.find_element_by_id('verifyBox560').click() # mental break
-    browser.find_element_by_id('verifyBox561').click() # eating healthy
-    browser.find_element_by_id('HHSubmitBut').click()
+  browser.find_element_by_id('verifyBox559').click() # stairs
+  browser.find_element_by_id('verifyBox560').click() # mental break
+  browser.find_element_by_id('verifyBox561').click() # eating healthy
+  browser.find_element_by_id('HHSubmitBut').click()
 
 # returns true if going to the next day is successful
 def incrementDay():
@@ -81,6 +81,7 @@ def main():
   gotoActivities()
   setStartDate() #todo: take args for specifying start date
   runRange()
+  browser.close()
 
 if __name__ == "__main__":
     main()
